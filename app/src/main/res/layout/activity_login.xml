@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-			  android:layout_width = "match_parent"
-			  android:layout_height = "match_parent"
-			  android:orientation = "vertical">
+<android.support.constraint.ConstraintLayout android:id = "@+id/layoutRoot"
+											 xmlns:android = "http://schemas.android.com/apk/res/android"
+											 xmlns:app = "http://schemas.android.com/apk/res-auto"
+											 android:layout_width = "match_parent"
+											 android:layout_height = "match_parent"
+											 android:background = "@android:color/white">
 
-</LinearLayout>
+	<ImageView
+		android:id = "@+id/imageViewLogo"
+		android:layout_width = "@dimen/logo_size"
+		android:layout_height = "@dimen/logo_size"
+		android:src = "@drawable/logo"
+		android:visibility = "gone"
+		app:layout_constraintBottom_toTopOf = "@+id/cardViewLoginSection"
+		app:layout_constraintLeft_toLeftOf = "parent"
+		app:layout_constraintRight_toRightOf = "parent"
+		app:layout_constraintTop_toTopOf = "parent" />
+
+	<android.support.design.card.MaterialCardView
+		android:id = "@+id/cardViewLoginSection"
+		android:layout_width = "@dimen/login_section_width"
+		android:layout_height = "wrap_content"
+		android:visibility = "gone"
+		app:cardBackgroundColor = "@color/colorPrimary"
+		app:cardCornerRadius = "@dimen/card_radius"
+		app:layout_constraintBottom_toBottomOf = "parent"
+		app:layout_constraintLeft_toLeftOf = "parent"
+		app:layout_constraintRight_toRightOf = "parent"
+		app:layout_constraintTop_toBottomOf = "@+id/imageViewLogo">
+
+		<LinearLayout
+			android:layout_width = "@dimen/login_section_width"
+			android:layout_height = "wrap_content"
+			android:orientation = "vertical"
+			android:padding = "@dimen/spacing">
+
+			<android.support.v7.widget.AppCompatEditText
+				android:id = "@+id/mEditTextUsername"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:hint = "@string/title_username" />
+
+			<android.support.v7.widget.AppCompatEditText
+				android:id = "@+id/mEditTextPassword"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginTop = "@dimen/spacing"
+				android:hint = "@string/title_password"
+				android:inputType = "textVisiblePassword" />
+
+			<android.support.v7.widget.AppCompatTextView
+				style = "@style/WhiteTextView"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginTop = "@dimen/spacing"
+				android:text = "@string/title_country" />
+
+			<Spinner
+				android:id = "@+id/spinner"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content" />
+
+		</LinearLayout>
+
+	</android.support.design.card.MaterialCardView>
+
+</android.support.constraint.ConstraintLayout>

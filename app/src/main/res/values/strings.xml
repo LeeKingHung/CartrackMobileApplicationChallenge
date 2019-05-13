@@ -1,4 +1,12 @@
 <resources>
+
 	<string name = "app_name">Cartrack Mobile Application</string>
+
+	<!--region Login-->
 	<string name = "title_login">Login</string>
+	<string name = "title_username">Username</string>
+	<string name = "title_password">Password</string>
+	<string name = "title_country">Country</string>
+	<!--endregion-->
+
 </resources>
