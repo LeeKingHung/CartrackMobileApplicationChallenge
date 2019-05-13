@@ -1,0 +1,29 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/captures
+.externalNativeBuild
+*.class
+*.iws
+*.ipr
+*.log
+build/
+debug/
+gen/
+release/
+
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+#NDK
+obj/
+
+# Other
+*.exe
+*.lnk

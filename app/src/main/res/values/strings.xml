@@ -1,0 +1,4 @@
+<resources>
+	<string name = "app_name">Cartrack Mobile Application</string>
+	<string name = "title_login">Login</string>
+</resources>
