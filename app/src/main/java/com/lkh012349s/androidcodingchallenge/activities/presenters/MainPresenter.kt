@@ -14,4 +14,8 @@ class MainPresenter {
 	@Bean protected lateinit var dataOperation: DataOperation
 	internal lateinit var view: MainInterface
 	
+	fun loadUsers() {
+		dataOperation.loadUsers { userInfos -> view.loadUsers(userInfos) }
+	}
+	
 }

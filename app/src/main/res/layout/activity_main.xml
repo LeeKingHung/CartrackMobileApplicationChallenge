@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android = "http://schemas.android.com/apk/res/android"
 												 xmlns:app = "http://schemas.android.com/apk/res-auto"
-												 xmlns:tools = "http://schemas.android.com/tools"
 												 android:layout_width = "match_parent"
-												 android:layout_height = "match_parent"
-												 tools:context = ".MainActivity">
+												 android:layout_height = "match_parent">
 
 	<android.support.design.widget.AppBarLayout
 		android:layout_width = "match_parent"
@@ -20,7 +18,7 @@
 			app:titleEnabled = "false">
 
 			<android.support.v7.widget.Toolbar
-				android:id = "@+id/mToolbar"
+				android:id = "@+id/toolbar"
 				android:layout_width = "match_parent"
 				android:layout_height = "?attr/actionBarSize"
 				app:layout_collapseMode = "pin"
@@ -31,7 +29,7 @@
 	</android.support.design.widget.AppBarLayout>
 
 	<android.support.v7.widget.RecyclerView
-		android:id = "@+id/mRecyclerView"
+		android:id = "@+id/recyclerView"
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
 		android:clipToPadding = "false"

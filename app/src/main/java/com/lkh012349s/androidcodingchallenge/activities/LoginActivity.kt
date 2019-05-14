@@ -1,21 +1,19 @@
 package com.lkh012349s.androidcodingchallenge.activities
 
 import android.annotation.SuppressLint
-import android.graphics.Paint
-import android.support.design.widget.Snackbar
-import android.support.design.widget.SnackbarContentLayout
 import android.support.transition.TransitionManager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import com.lkh012349s.androidcodingchallenge.R
 import com.lkh012349s.androidcodingchallenge.activities.interfaces.LoginInterface
 import com.lkh012349s.androidcodingchallenge.activities.presenters.LoginPresenter
 import com.lkh012349s.androidcodingchallenge.models.User
 import com.lkh012349s.androidcodingchallenge.views.getTextOrEmpty
+import com.lkh012349s.androidcodingchallenge.views.showErrorMsg
+import com.lkh012349s.androidcodingchallenge.views.underline
 import com.ybs.countrypicker.CountryPicker
 import kotlinx.android.synthetic.main.activity_login.*
+import org.androidannotations.annotations.AfterInject
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Bean
 import org.androidannotations.annotations.Click
@@ -37,10 +35,14 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 	@StringRes(R.string.title_select_country) protected lateinit var titleSelectCountry: String
 	private var selectedCountry = ""
 	
+	@AfterInject
+	fun afterInject() {
+		presenter.view = this
+	}
+	
 	@AfterViews
 	fun afterViewInjections() {
-		presenter.view = this
-		textViewCountry.paintFlags = textViewCountry.paintFlags or Paint.UNDERLINE_TEXT_FLAG  // underline textview
+		textViewCountry.underline()
 		animate()
 		presenter.populateDefaultUser()
 	}
@@ -95,11 +97,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 	}
 	
 	override fun showError(msg: String) {
-		val snackbar = Snackbar.make(layoutRoot, msg, Snackbar.LENGTH_SHORT)
-		val contentLayout = (snackbar.view as ViewGroup).getChildAt(0) as SnackbarContentLayout
-		val tv = contentLayout.findViewById(android.support.design.R.id.snackbar_text) as TextView
-		tv.setTextColor(colorAccent)
-		snackbar.show()
+		showErrorMsg(msg, layoutRoot)
 	}
 	
 	override fun onSuccessfulLogin() {

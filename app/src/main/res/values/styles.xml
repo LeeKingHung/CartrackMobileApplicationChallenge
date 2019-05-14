@@ -3,14 +3,11 @@
 	<style name = "AppTheme" parent = "Theme.MaterialComponents.Light.DarkActionBar">
 		<item name = "android:editTextStyle">@style/EditTextStyle</item>
 		<item name = "android:textViewStyle">@style/TextViewStyle</item>
+		<item name = "android:windowActionBar">false</item>
 		<item name = "colorPrimary">@color/colorPrimary</item>
 		<item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name = "colorAccent">@color/colorAccent</item>
 		<item name = "editTextStyle">@style/EditTextStyle</item>
-	</style>
-
-	<style name = "AppTheme.NoActionBar">
-		<item name = "android:windowActionBar">false</item>
 		<item name = "windowActionBar">false</item>
 		<item name = "windowNoTitle">true</item>
 	</style>
@@ -25,12 +22,29 @@
 	</style>
 
 	<style name = "TextViewStyle" parent = "@android:style/Widget.Material.TextView">
+		<item name = "android:drawablePadding">@dimen/spacing_small</item>
 		<item name = "android:textColor">@android:color/black</item>
 		<item name = "android:textSize">@dimen/text_size</item>
 	</style>
 
 	<style name = "AccentTextView">
 		<item name = "android:textColor">@color/colorAccent</item>
+	</style>
+
+	<style name = "SmallTextView">
+		<item name = "android:textSize">@dimen/text_size_small</item>
+	</style>
+
+	<style name = "UserInfoTextView" parent = "SmallTextView">
+		<item name = "android:layout_marginLeft">@dimen/spacing</item>
+		<item name = "android:layout_marginRight">@dimen/spacing</item>
+		<item name = "android:layout_marginStart">@dimen/spacing</item>
+		<item name = "android:layout_marginEnd">@dimen/spacing</item>
+		<item name = "android:layout_marginTop">@dimen/spacing_small</item>
+	</style>
+
+	<style name = "UserInfoTextView.Theme">
+		<item name = "android:textColor">@color/colorPrimary</item>
 	</style>
 
 </resources>

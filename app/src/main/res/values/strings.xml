@@ -17,5 +17,20 @@
 	<string name = "password">password</string>
 	<string name = "country">country</string>
 	<string name = "msg_error_invalid_user_credentials">Invalid user credentials.</string>
+	<!--endregion-->
+
+	<!--region MainActivitiy-->
+	<string name = "msg_error_unable_to_load_users">Unable to load users.</string>
+	<!--endregion-->
+
+	<!--region MapActivity-->
+	<string name = "title_map">Map</string>
+	<!--endregion-->
+
+	<!--region UserCardView-->
+	<string name = "title_catch_phrase">Catch Phrase:</string>
+	<string name = "title_bs">BS:</string>
+	<string name = "title_view_map">View Map</string>
+	<!--endregion-->
 
 </resources>
