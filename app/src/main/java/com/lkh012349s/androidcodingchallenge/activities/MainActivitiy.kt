@@ -9,8 +9,8 @@ import android.view.View
 import com.lkh012349s.androidcodingchallenge.R
 import com.lkh012349s.androidcodingchallenge.activities.interfaces.MainInterface
 import com.lkh012349s.androidcodingchallenge.activities.presenters.MainPresenter
-import com.lkh012349s.androidcodingchallenge.models.UserInfo
 import com.lkh012349s.androidcodingchallenge.views.MyAdapter
+import com.lkh012349s.androidcodingchallenge.views.PaginationScrollListener
 import com.lkh012349s.androidcodingchallenge.views.showErrorMsg
 import kotlinx.android.synthetic.main.activity_main.*
 import org.androidannotations.annotations.AfterInject
@@ -26,6 +26,9 @@ class MainActivitiy : AppCompatActivity(), MainInterface {
 	@Bean protected lateinit var presenter: MainPresenter
 	@DimensionPixelSizeRes(R.dimen.spacing) @JvmField final var mSpacing = 0
 	lateinit var mAdapter: MyAdapter
+	
+	private var isLastPage = false
+	private var curItemIndex = -1
 	
 	internal inner class VerticalSpaceItemDecoration(private val verticalSpaceHeight: Int) : RecyclerView.ItemDecoration() {
 		
@@ -48,21 +51,40 @@ class MainActivitiy : AppCompatActivity(), MainInterface {
 	}
 	
 	fun setupRecyclerView() {
+		
 		recyclerView.setHasFixedSize(true)
 		val layoutManager = LinearLayoutManager(this)
 		recyclerView.layoutManager = layoutManager
 		recyclerView.addItemDecoration(VerticalSpaceItemDecoration(mSpacing))
 		mAdapter = MyAdapter()
 		recyclerView.adapter = mAdapter
+		
+		recyclerView.addOnScrollListener(object : PaginationScrollListener(layoutManager) {
+			
+			override val isLastPage: Boolean
+				get() = this@MainActivitiy.isLastPage
+			
+			override val isLoading: Boolean
+				get() = mAdapter.isLoading()
+			
+			override fun loadMoreItems() {
+				loadMoreUsers()
+			}
+			
+		})
+		
 	}
 	
 	// =============================================================================================================
 	// region MainInterface Implementation
 	// =============================================================================================================
 	
-	override fun loadUsers(userInfos: List<UserInfo>?) {
+	override fun loadMoreUsers() {
+		val (curItemIndex, isLastPage, userInfos) = presenter.loadMoreUser(curItemIndex)
+		this.isLastPage = isLastPage
+		this.curItemIndex = curItemIndex
 		if(userInfos == null) showErrorMsg(getString(R.string.msg_error_unable_to_load_users), recyclerView)
-		else mAdapter.setData(userInfos)
+		else mAdapter.add(userInfos)
 	}
 	
 }
