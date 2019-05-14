@@ -3,6 +3,6 @@
 	<dimen name = "logo_size">200dp</dimen>
 	<dimen name = "text_size">15sp</dimen>
 	<dimen name = "spacing">10dp</dimen>
-	<dimen name = "card_radius">10dp</dimen>
+	<dimen name = "radius">10dp</dimen>
 	<dimen name = "login_section_width">300dp</dimen>
 </resources>

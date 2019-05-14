@@ -5,7 +5,6 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import com.lkh012349s.androidcodingchallenge.models.User
-import io.reactivex.Completable
 
 @Dao
 interface UserDao {
@@ -14,6 +13,6 @@ interface UserDao {
 	fun getAllUsers(): List<User>
 	
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insertUser(user: User): Completable
+	fun insertUser(user: User)
 	
 }

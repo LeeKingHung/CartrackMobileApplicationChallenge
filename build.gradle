@@ -21,6 +21,7 @@ allprojects {
         jcenter()
         mavenCentral() // For AndroidAnnotations
         mavenLocal() // For AndroidAnnotations
+        maven { url "https://jitpack.io" } // Country Picker
     }
 
 }

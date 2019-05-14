@@ -1,8 +1,7 @@
 package com.lkh012349s.androidcodingchallenge.views
 
-import android.graphics.PorterDuff
-import android.widget.Spinner
+import android.widget.TextView
 
-fun Spinner.setBackgroundColorFilter(color: Int) {
-	background.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+fun TextView.getTextOrEmpty(): String {
+	return text?.toString() ?: ""
 }

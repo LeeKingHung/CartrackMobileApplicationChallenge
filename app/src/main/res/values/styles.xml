@@ -1,15 +1,12 @@
 <resources>
 
-	<style name = "AppTheme" parent = "Theme.AppCompat.Light.DarkActionBar">
+	<style name = "AppTheme" parent = "Theme.MaterialComponents.Light.DarkActionBar">
 		<item name = "android:editTextStyle">@style/EditTextStyle</item>
 		<item name = "android:textViewStyle">@style/TextViewStyle</item>
-		<item name = "android:windowActionBar">false</item>
 		<item name = "colorPrimary">@color/colorPrimary</item>
 		<item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name = "colorAccent">@color/colorAccent</item>
 		<item name = "editTextStyle">@style/EditTextStyle</item>
-		<item name = "windowActionBar">false</item>
-		<item name = "windowNoTitle">true</item>
 	</style>
 
 	<style name = "AppTheme.NoActionBar">
@@ -19,21 +16,21 @@
 	</style>
 
 	<style name = "EditTextStyle" parent = "@style/Widget.AppCompat.EditText">
+		<item name = "android:backgroundTint">@android:color/white</item>
+		<item name = "android:inputType">text</item>
+		<item name = "android:maxLines">1</item>
 		<item name = "android:textColor">@android:color/white</item>
 		<item name = "android:textSize">@dimen/text_size</item>
 		<item name = "android:textColorHint">@color/colorPrimaryLight</item>
-		<item name = "android:backgroundTint">@android:color/white</item>
 	</style>
 
 	<style name = "TextViewStyle" parent = "@android:style/Widget.Material.TextView">
-		<item name = "android:ellipsize">end</item>
-		<item name = "android:maxLines">2</item>
 		<item name = "android:textColor">@android:color/black</item>
 		<item name = "android:textSize">@dimen/text_size</item>
 	</style>
 
-	<style name = "WhiteTextView">
-		<item name = "android:textColor">@android:color/white</item>
+	<style name = "AccentTextView">
+		<item name = "android:textColor">@color/colorAccent</item>
 	</style>
 
 </resources>

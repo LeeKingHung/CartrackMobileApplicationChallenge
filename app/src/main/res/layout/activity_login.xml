@@ -23,45 +23,79 @@
 		android:layout_height = "wrap_content"
 		android:visibility = "gone"
 		app:cardBackgroundColor = "@color/colorPrimary"
-		app:cardCornerRadius = "@dimen/card_radius"
+		app:cardCornerRadius = "@dimen/radius"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintLeft_toLeftOf = "parent"
 		app:layout_constraintRight_toRightOf = "parent"
 		app:layout_constraintTop_toBottomOf = "@+id/imageViewLogo">
 
-		<LinearLayout
+		<android.support.constraint.ConstraintLayout
 			android:layout_width = "@dimen/login_section_width"
 			android:layout_height = "wrap_content"
 			android:orientation = "vertical"
 			android:padding = "@dimen/spacing">
 
 			<android.support.v7.widget.AppCompatEditText
-				android:id = "@+id/mEditTextUsername"
+				android:id = "@+id/editTextUsername"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				android:hint = "@string/title_username" />
+				android:hint = "@string/title_username"
+				app:layout_constraintBottom_toTopOf = "@+id/editTextPassword"
+				app:layout_constraintLeft_toLeftOf = "parent"
+				app:layout_constraintRight_toRightOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" />
 
 			<android.support.v7.widget.AppCompatEditText
-				android:id = "@+id/mEditTextPassword"
+				android:id = "@+id/editTextPassword"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:layout_marginTop = "@dimen/spacing"
 				android:hint = "@string/title_password"
-				android:inputType = "textVisiblePassword" />
+				android:inputType = "textVisiblePassword"
+				app:layout_constraintBottom_toTopOf = "@+id/textViewCountryTitle"
+				app:layout_constraintLeft_toLeftOf = "parent"
+				app:layout_constraintRight_toRightOf = "parent"
+				app:layout_constraintTop_toBottomOf = "@+id/editTextUsername" />
 
 			<android.support.v7.widget.AppCompatTextView
-				style = "@style/WhiteTextView"
+				android:id = "@+id/textViewCountry"
+				style = "@style/AccentTextView"
+				android:layout_width = "0dp"
+				android:layout_height = "wrap_content"
+				android:layout_marginLeft = "@dimen/spacing"
+				android:padding = "@dimen/spacing"
+				android:text = "@string/title_select"
+				app:layout_constraintBottom_toTopOf = "@+id/button"
+				app:layout_constraintLeft_toRightOf = "@+id/textViewCountryTitle"
+				app:layout_constraintRight_toRightOf = "parent"
+				app:layout_constraintTop_toBottomOf = "@+id/editTextPassword" />
+
+			<android.support.v7.widget.AppCompatTextView
+				android:id = "@+id/textViewCountryTitle"
+				style = "@style/AccentTextView"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:layout_marginBottom = "@dimen/spacing"
+				android:text = "@string/title_select_country"
+				app:layout_constraintBaseline_toBaselineOf = "@+id/textViewCountry"
+				app:layout_constraintLeft_toLeftOf = "parent"
+				app:layout_constraintRight_toLeftOf = "@+id/textViewCountry" />
+
+			<android.support.design.button.MaterialButton
+				android:id = "@+id/button"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:layout_marginTop = "@dimen/spacing"
-				android:text = "@string/title_country" />
+				android:text = "@string/title_login"
+				android:textColor = "@color/colorPrimary"
+				app:cornerRadius = "@dimen/radius"
+				app:layout_constraintBottom_toBottomOf = "parent"
+				app:layout_constraintLeft_toLeftOf = "parent"
+				app:layout_constraintRight_toRightOf = "parent"
+				app:layout_constraintTop_toBottomOf = "@+id/textViewCountryTitle"
+				app:rippleColor = "@color/colorPrimary" />
 
-			<Spinner
-				android:id = "@+id/spinner"
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content" />
-
-		</LinearLayout>
+		</android.support.constraint.ConstraintLayout>
 
 	</android.support.design.card.MaterialCardView>
 

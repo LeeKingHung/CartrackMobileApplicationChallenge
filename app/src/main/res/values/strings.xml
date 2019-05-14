@@ -7,6 +7,15 @@
 	<string name = "title_username">Username</string>
 	<string name = "title_password">Password</string>
 	<string name = "title_country">Country</string>
+	<string name = "title_select_country">Select Country:</string>
+	<string name = "title_select">Select</string>
 	<!--endregion-->
+
+	<!--region LoginPresenter-->
+	<string name = "msg_enter">Please enter %s.</string>
+	<string name = "username">username</string>
+	<string name = "password">password</string>
+	<string name = "country">country</string>
+	<string name = "msg_error_invalid_user_credentials">Invalid user credentials.</string>
 
 </resources>

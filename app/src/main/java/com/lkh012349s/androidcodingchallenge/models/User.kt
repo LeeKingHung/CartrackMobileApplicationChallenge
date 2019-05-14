@@ -13,6 +13,13 @@ data class User(
 	
 	@ColumnInfo val country: String
 
-){
-
+) {
+	
+	companion object {
+		const val LOGIN_USERNAME = "Leanne Graham"
+		const val LOGIN_PASSWORD = "Leanne Graham"
+		const val LOGIN_COUNTRY = "Singapore"
+		fun getDefaultUser() = User(LOGIN_USERNAME, LOGIN_PASSWORD, LOGIN_COUNTRY)
+	}
+	
 }
