@@ -2,11 +2,7 @@ package com.lkh012349s.androidcodingchallenge.models
 
 import android.content.Context
 import com.lkh012349s.androidcodingchallenge.models.daos.UserDao
-import org.androidannotations.annotations.AfterInject
-import org.androidannotations.annotations.Background
-import org.androidannotations.annotations.EBean
-import org.androidannotations.annotations.RootContext
-import org.androidannotations.annotations.UiThread
+import org.androidannotations.annotations.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,11 +15,14 @@ class DataOperation {
 	companion object {
 		const val BASE_URL = "https://jsonplaceholder.typicode.com"
 	}
-	
+
+	// AndroidAnnotations injection: the field below will be auto injected.
 	@RootContext lateinit var context: Context
+
 	private var userDao: UserDao? = null
 	private var restService: RestService? = null
-	
+
+	// AndroidAnnotations injection: this method will run automatically after fields injections.
 	@AfterInject
 	fun afterInject() {
 		val database = MyDatabase.getInstance(context)
@@ -91,7 +90,7 @@ class DataOperation {
 	}
 	
 	/**
-	 * Runnable will run in background thread.
+	 * AndroidAnnotations: Runnable will run in background thread.
 	 */
 	@Background
 	protected fun runBackground(runnable: () -> Unit) {
@@ -99,7 +98,7 @@ class DataOperation {
 	}
 	
 	/**
-	 * Runnable will run in UI thread.
+	 * AndroidAnnotations: Runnable will run in UI thread.
 	 */
 	@UiThread(propagation = UiThread.Propagation.REUSE)
 	protected fun runOnUiThread(runnable: () -> Unit) {

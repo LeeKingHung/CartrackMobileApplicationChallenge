@@ -22,11 +22,12 @@ import org.androidannotations.annotations.res.DimensionPixelSizeRes
 @SuppressLint("Registered")
 @EActivity(R.layout.activity_main)
 class MainActivitiy : AppCompatActivity(), MainInterface {
-	
+
+	// AndroidAnnotations injection: the fields below will be auto injected.
 	@Bean protected lateinit var presenter: MainPresenter
 	@DimensionPixelSizeRes(R.dimen.spacing) @JvmField final var mSpacing = 0
+
 	lateinit var mAdapter: MyAdapter
-	
 	private var isLastPage = false
 	private var curItemIndex = -1
 	
@@ -37,12 +38,14 @@ class MainActivitiy : AppCompatActivity(), MainInterface {
 		}
 		
 	}
-	
+
+	// AndroidAnnotations injection: this method will run automatically after fields injections.
 	@AfterInject
 	fun afterInject() {
 		presenter.view = this
 	}
-	
+
+	// AndroidAnnotations injection: this method will run automatically after views injections.
 	@AfterViews
 	fun afterViewInjections() {
 		setSupportActionBar(toolbar)

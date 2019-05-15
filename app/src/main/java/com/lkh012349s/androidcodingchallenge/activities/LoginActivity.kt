@@ -13,12 +13,7 @@ import com.lkh012349s.androidcodingchallenge.views.showErrorMsg
 import com.lkh012349s.androidcodingchallenge.views.underline
 import com.ybs.countrypicker.CountryPicker
 import kotlinx.android.synthetic.main.activity_login.*
-import org.androidannotations.annotations.AfterInject
-import org.androidannotations.annotations.AfterViews
-import org.androidannotations.annotations.Bean
-import org.androidannotations.annotations.Click
-import org.androidannotations.annotations.EActivity
-import org.androidannotations.annotations.UiThread
+import org.androidannotations.annotations.*
 import org.androidannotations.annotations.res.ColorRes
 import org.androidannotations.annotations.res.StringRes
 
@@ -29,37 +24,44 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 	companion object {
 		const val COUNTRY_PICKER_TAG = "COUNTRY_PICKER"
 	}
-	
+
+	// AndroidAnnotations injection: the fields below will be auto injected.
 	@Bean protected lateinit var presenter: LoginPresenter
 	@ColorRes(R.color.colorAccent) @JvmField protected final var colorAccent = 0
 	@StringRes(R.string.title_select_country) protected lateinit var titleSelectCountry: String
+
 	private var selectedCountry = ""
-	
+
+	// AndroidAnnotations injection: this method will run automatically after fields injections.
 	@AfterInject
 	fun afterInject() {
 		presenter.view = this
 	}
-	
+
+	// AndroidAnnotations injection: this method will run automatically after views injections.
 	@AfterViews
 	fun afterViewInjections() {
 		textViewCountry.underline()
 		animate()
 		presenter.populateDefaultUser()
 	}
-	
+
+	// AndroidAnnotations: this method will run in UI thread
 	@UiThread(propagation = UiThread.Propagation.REUSE, delay = 200)
 	fun animate() {
 		TransitionManager.beginDelayedTransition(layoutRoot)
 		imageViewLogo.visibility = View.VISIBLE
 		showLoginSection()
 	}
-	
+
+	// AndroidAnnotations: this method will run in UI thread
 	@UiThread(propagation = UiThread.Propagation.REUSE, delay = 1000)
 	fun showLoginSection() {
 		TransitionManager.beginDelayedTransition(layoutRoot)
 		cardViewLoginSection.visibility = View.VISIBLE
 	}
-	
+
+	// AndroidAnnotations: this method will generate view on-click listener.
 	@Click(R.id.textViewCountry)
 	fun onCountryPickerClick() {
 		
@@ -73,7 +75,8 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 		picker.show(supportFragmentManager, COUNTRY_PICKER_TAG)
 		
 	}
-	
+
+	// AndroidAnnotations: this method will generate view on-click listener.
 	@Click(R.id.button)
 	fun onLoginButtonClick() {
 		val username = editTextUsername.getTextOrEmpty()

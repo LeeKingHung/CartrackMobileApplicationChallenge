@@ -11,9 +11,11 @@ import org.androidannotations.annotations.RootContext
 
 @EBean
 class LoginPresenter {
-	
+
+	// AndroidAnnotations injection: the fields below will be auto injected.
 	@RootContext protected lateinit var context: Context
 	@Bean protected lateinit var dataOperation: DataOperation
+
 	internal lateinit var view: LoginInterface
 	
 	fun populateDefaultUser() {

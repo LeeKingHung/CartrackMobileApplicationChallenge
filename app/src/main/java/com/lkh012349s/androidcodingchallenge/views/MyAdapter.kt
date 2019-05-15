@@ -54,12 +54,16 @@ class MyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 	fun add(dataSet: List<UserInfo>) {
 		
 		if(this.dataSet == null) {
-			
+
+			// For first time to load data, put the data directly and update the UI.
 			this.dataSet = arrayListOf()
 			this.dataSet!!.addAll(dataSet)
 			notifyDataSetChanged()
 			
 		} else {
+
+			// For subsequent data loading, pause for a while and show progress bar,
+			// and then put the data and remove the progress bar.
 			
 			isLoading = true
 			notifyDataSetChanged()

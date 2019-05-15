@@ -17,17 +17,20 @@ import org.androidannotations.annotations.res.DimensionRes
 
 @EViewGroup(R.layout.view_user_card)
 class UserCardView(context: Context) : MaterialCardView(context) {
-	
+
+	// AndroidAnnotations injection: the fields below will be auto injected.
 	@ColorRes(R.color.colorAccent) @JvmField final var colorAccent = 0
 	@DimensionRes(R.dimen.card_elevation) @JvmField final var cardElevationValue = 0f
 	private var curAddress: Address? = null
-	
+
+	// AndroidAnnotations injection: this method will run automatically after fields injections.
 	@AfterInject
 	fun afterInject() {
 		setCardBackgroundColor(colorAccent)
 		cardElevation = cardElevationValue
 	}
-	
+
+	// AndroidAnnotations injection: this method will run automatically after views injections.
 	@AfterViews
 	fun afterViewInjections() {
 		textViewUsername.setDrawableLeft(R.drawable.user)
@@ -38,7 +41,8 @@ class UserCardView(context: Context) : MaterialCardView(context) {
 		textViewCompany.setDrawableLeft(R.drawable.company)
 		textViewMap.underline()
 	}
-	
+
+	// AndroidAnnotations: this method will generate view on-click listener.
 	@Click(R.id.textViewMap)
 	fun onMapClick() {
 		MapActivity_.intent(context).address(curAddress!!).start()
